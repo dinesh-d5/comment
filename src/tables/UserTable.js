@@ -1,7 +1,7 @@
 import React from 'react'
 
 const UserTable = props => (
-  <table>
+  <table >
     <thead>
       <tr>
         <th>Name</th>
@@ -15,7 +15,11 @@ const UserTable = props => (
             <td>{user.name}</td>
             <td>{user.comment}</td>
             <td>
-              <button
+              <button className="btn1"
+                onClick={() => props.deleteUser(user.id)}>
+                Edit
+              </button>            
+              <button className="btn"
                 onClick={() => props.deleteUser(user.id)}>
                 Delete
               </button>
