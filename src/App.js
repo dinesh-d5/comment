@@ -1,6 +1,9 @@
 import React, { useState, Fragment } from 'react'
 import AddUserForm from './forms/AddUserForm'
 import UserTable from './tables/UserTable'
+import EditUser from './Edituser'
+
+
 
 const App = () => {
 	
@@ -15,6 +18,7 @@ const App = () => {
 
 	const [ users, setUsers ] = useState(usersData)
 	const [ currentUser, setCurrentUser ] = useState(initialFormState)
+   const[editit,setEdit] = useState(false)
 
 
 	const addUser = user => {
@@ -26,16 +30,35 @@ const App = () => {
 		setUsers(users.filter(user => user.id !== id))
 	} 
 
-	
+	const editr=user=>{
+		setEdit(true)
+setCurrentUser({id:user.id,name:user.name,comment:user.comment})
+	}
 
-	return (
-		<div className="container">
-			<h1>Comment Form</h1>
-				<div >
+	const updateUser = (id, updatedUser) => {
+		setEdit(false)
+
+		setUsers(users.map(user => (user.id === id ? updatedUser : user)))
+	}
+
+
+return (
+		<div>
+			<h1 className="form-style-6h1">Comment Form</h1>
+				<div > {editit ? (
+					<Fragment>
+						<EditUser 
+						editit={editit}
+						setEdit={setEdit}
+						currentUser={currentUser}
+						updateUser={updateUser}
+						/>
+					</Fragment>
+					): (
 				<Fragment>
 						<AddUserForm addUser={addUser} />
-						</Fragment>
-				 <UserTable users={users} deleteUser={deleteUser} /> 
+						</Fragment>)}
+				 <UserTable users={users} editr={editr} deleteUser={deleteUser} /> 
 				</div>
 			</div>
 		
