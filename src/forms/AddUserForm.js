@@ -11,21 +11,20 @@ const AddUserForm = props => {
 	}
 
 	return (
+		<div className="form-style-6">
 		<form
 			onSubmit={event => {
 				event.preventDefault()
 				if (!user.name || !user.comment) return
 
 				props.addUser(user)
-				setUser(initialFormState)
-			}}
-		>
-			<label>Name</label>
-			<input type="text" name="name" value={user.name} onChange={handleInputChange} />
-			<label>Comment</label>
-			<textarea type="text" name="comment" value={user.comment} onChange={handleInputChange} />
-			<button>Add new comment</button>
-		</form>
+				setUser(initialFormState)}}>
+			
+			<input className="form-style-6" type="text" name="name" value={user.name} onChange={handleInputChange} placeholder="Username or Email"/><br/>
+			
+			<textarea className="form-style-6" type="text" name="comment" value={user.comment} onChange={handleInputChange} placeholder="Comment you Thoughts" /><br/>
+			<button className="form-style-6">Add a comment</button> 
+		</form></div>
 	)
 }
 
