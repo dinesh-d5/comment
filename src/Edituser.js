@@ -26,7 +26,7 @@ const EditUser = props => {
           <input className="form-style-6" type="text" name="name" value={user.name} onChange={handleInputChange} />
         
           <input className="form-style-6" type="text" name="comment" value={user.comment} onChange={handleInputChange} />
-          <button className="form-style-6">Add a comment</button> 
+          <button className="form-style-6">Update Comment</button> 
          
         </form></div>
       )
